@@ -53,5 +53,14 @@ A simple desktop GUI tool built that allows users to resize images individually 
 - Pillow (PIL) 
 
 
+## Screenshots
+
+### Single Image Resizing
+![Single Image](assets/screenshot-single.png)
+
+### Bulk Resize
+![Bulk Resize](assets/screenshot-bulk.png)
+
+
 ## Thank You for Reading!
 
