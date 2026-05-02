@@ -56,10 +56,10 @@ A simple desktop GUI tool built that allows users to resize images individually 
 ## Screenshots
 
 ### Single Image Resizing
-![Single Image](assets/screenshot-single.png)
+![Single Image](assets/Screenshot-Single-Tab.png)
 
 ### Bulk Resize
-![Bulk Resize](assets/screenshot-bulk.png)
+![Bulk Resize](assets/Screenshot-Bulk-Tab.png)
 
 
 ## Thank You for Reading!
