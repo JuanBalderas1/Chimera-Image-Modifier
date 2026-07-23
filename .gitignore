@@ -1,6 +1,16 @@
-.venv/
+# Python cache
 __pycache__/
-build/
-dist/
-*.spec
-Resized Images/
+*.pyc
+*.pyo
+
+# Virtual Environments
+.venv/
+venv/
+
+# Generated application output
+Modified Images/
+
+# Editor and Operating-System files
+.vscode/
+.DS_Store
+Thumbs.db
