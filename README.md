@@ -144,10 +144,6 @@ The folder is created automatically when the first image is saved.
 
 ![Personal Settings](assets/Screenshot-Personal-Settings.png)
 
-### Chimera Themes
-
-![Chimera Themes](assets/Screenshot-Chimera-Themes.png)
-
 ---
 
 ## Planned Improvements
