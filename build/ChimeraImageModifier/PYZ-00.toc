@@ -1,311 +1,334 @@
-('C:\\Custom Coding '
- 'Projects\\ImageResizerTool\\build\\AutomaticImageResizer\\PYZ-00.pyz',
+('C:\\Custom Coding Projects\\Chimera Image '
+ 'Modifier\\build\\ChimeraImageModifier\\PYZ-00.pyz',
  [('PIL',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\__init__.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\__init__.py',
    'PYMODULE'),
   ('PIL.AvifImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\AvifImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\AvifImagePlugin.py',
    'PYMODULE'),
   ('PIL.BlpImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\BlpImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\BlpImagePlugin.py',
    'PYMODULE'),
   ('PIL.BmpImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\BmpImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\BmpImagePlugin.py',
    'PYMODULE'),
   ('PIL.BufrStubImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\BufrStubImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\BufrStubImagePlugin.py',
    'PYMODULE'),
   ('PIL.CurImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\CurImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\CurImagePlugin.py',
    'PYMODULE'),
   ('PIL.DcxImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\DcxImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\DcxImagePlugin.py',
    'PYMODULE'),
   ('PIL.DdsImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\DdsImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\DdsImagePlugin.py',
    'PYMODULE'),
   ('PIL.EpsImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\EpsImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\EpsImagePlugin.py',
    'PYMODULE'),
   ('PIL.ExifTags',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\ExifTags.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\ExifTags.py',
    'PYMODULE'),
   ('PIL.FitsImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\FitsImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\FitsImagePlugin.py',
    'PYMODULE'),
   ('PIL.FliImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\FliImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\FliImagePlugin.py',
    'PYMODULE'),
   ('PIL.FpxImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\FpxImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\FpxImagePlugin.py',
    'PYMODULE'),
   ('PIL.FtexImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\FtexImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\FtexImagePlugin.py',
    'PYMODULE'),
   ('PIL.GbrImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\GbrImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\GbrImagePlugin.py',
    'PYMODULE'),
   ('PIL.GifImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\GifImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\GifImagePlugin.py',
    'PYMODULE'),
   ('PIL.GimpGradientFile',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\GimpGradientFile.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\GimpGradientFile.py',
    'PYMODULE'),
   ('PIL.GimpPaletteFile',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\GimpPaletteFile.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\GimpPaletteFile.py',
    'PYMODULE'),
   ('PIL.GribStubImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\GribStubImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\GribStubImagePlugin.py',
    'PYMODULE'),
   ('PIL.Hdf5StubImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\Hdf5StubImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\Hdf5StubImagePlugin.py',
    'PYMODULE'),
   ('PIL.IcnsImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\IcnsImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\IcnsImagePlugin.py',
    'PYMODULE'),
   ('PIL.IcoImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\IcoImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\IcoImagePlugin.py',
    'PYMODULE'),
   ('PIL.ImImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\ImImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\ImImagePlugin.py',
    'PYMODULE'),
   ('PIL.Image',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\Image.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\Image.py',
    'PYMODULE'),
   ('PIL.ImageChops',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\ImageChops.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\ImageChops.py',
    'PYMODULE'),
   ('PIL.ImageCms',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\ImageCms.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\ImageCms.py',
    'PYMODULE'),
   ('PIL.ImageColor',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\ImageColor.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\ImageColor.py',
+   'PYMODULE'),
+  ('PIL.ImageDraw',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\ImageDraw.py',
+   'PYMODULE'),
+  ('PIL.ImageDraw2',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\ImageDraw2.py',
    'PYMODULE'),
   ('PIL.ImageFile',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\ImageFile.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\ImageFile.py',
    'PYMODULE'),
   ('PIL.ImageFilter',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\ImageFilter.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\ImageFilter.py',
+   'PYMODULE'),
+  ('PIL.ImageFont',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\ImageFont.py',
    'PYMODULE'),
   ('PIL.ImageMath',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\ImageMath.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\ImageMath.py',
    'PYMODULE'),
   ('PIL.ImageMode',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\ImageMode.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\ImageMode.py',
    'PYMODULE'),
   ('PIL.ImageOps',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\ImageOps.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\ImageOps.py',
    'PYMODULE'),
   ('PIL.ImagePalette',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\ImagePalette.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\ImagePalette.py',
+   'PYMODULE'),
+  ('PIL.ImagePath',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\ImagePath.py',
    'PYMODULE'),
   ('PIL.ImageQt',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\ImageQt.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\ImageQt.py',
    'PYMODULE'),
   ('PIL.ImageSequence',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\ImageSequence.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\ImageSequence.py',
    'PYMODULE'),
   ('PIL.ImageShow',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\ImageShow.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\ImageShow.py',
+   'PYMODULE'),
+  ('PIL.ImageText',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\ImageText.py',
    'PYMODULE'),
   ('PIL.ImageTk',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\ImageTk.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\ImageTk.py',
    'PYMODULE'),
   ('PIL.ImageWin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\ImageWin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\ImageWin.py',
    'PYMODULE'),
   ('PIL.ImtImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\ImtImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\ImtImagePlugin.py',
    'PYMODULE'),
   ('PIL.IptcImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\IptcImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\IptcImagePlugin.py',
    'PYMODULE'),
   ('PIL.Jpeg2KImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\Jpeg2KImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\Jpeg2KImagePlugin.py',
    'PYMODULE'),
   ('PIL.JpegImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\JpegImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\JpegImagePlugin.py',
    'PYMODULE'),
   ('PIL.JpegPresets',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\JpegPresets.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\JpegPresets.py',
    'PYMODULE'),
   ('PIL.McIdasImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\McIdasImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\McIdasImagePlugin.py',
    'PYMODULE'),
   ('PIL.MicImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\MicImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\MicImagePlugin.py',
    'PYMODULE'),
   ('PIL.MpegImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\MpegImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\MpegImagePlugin.py',
    'PYMODULE'),
   ('PIL.MpoImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\MpoImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\MpoImagePlugin.py',
    'PYMODULE'),
   ('PIL.MspImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\MspImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\MspImagePlugin.py',
    'PYMODULE'),
   ('PIL.PaletteFile',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\PaletteFile.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\PaletteFile.py',
    'PYMODULE'),
   ('PIL.PalmImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\PalmImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\PalmImagePlugin.py',
    'PYMODULE'),
   ('PIL.PcdImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\PcdImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\PcdImagePlugin.py',
    'PYMODULE'),
   ('PIL.PcxImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\PcxImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\PcxImagePlugin.py',
    'PYMODULE'),
   ('PIL.PdfImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\PdfImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\PdfImagePlugin.py',
    'PYMODULE'),
   ('PIL.PdfParser',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\PdfParser.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\PdfParser.py',
    'PYMODULE'),
   ('PIL.PixarImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\PixarImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\PixarImagePlugin.py',
    'PYMODULE'),
   ('PIL.PngImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\PngImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\PngImagePlugin.py',
    'PYMODULE'),
   ('PIL.PpmImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\PpmImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\PpmImagePlugin.py',
    'PYMODULE'),
   ('PIL.PsdImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\PsdImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\PsdImagePlugin.py',
    'PYMODULE'),
   ('PIL.QoiImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\QoiImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\QoiImagePlugin.py',
    'PYMODULE'),
   ('PIL.SgiImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\SgiImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\SgiImagePlugin.py',
    'PYMODULE'),
   ('PIL.SpiderImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\SpiderImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\SpiderImagePlugin.py',
    'PYMODULE'),
   ('PIL.SunImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\SunImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\SunImagePlugin.py',
    'PYMODULE'),
   ('PIL.TgaImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\TgaImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\TgaImagePlugin.py',
    'PYMODULE'),
   ('PIL.TiffImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\TiffImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\TiffImagePlugin.py',
    'PYMODULE'),
   ('PIL.TiffTags',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\TiffTags.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\TiffTags.py',
    'PYMODULE'),
   ('PIL.WebPImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\WebPImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\WebPImagePlugin.py',
    'PYMODULE'),
   ('PIL.WmfImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\WmfImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\WmfImagePlugin.py',
    'PYMODULE'),
   ('PIL.XVThumbImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\XVThumbImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\XVThumbImagePlugin.py',
    'PYMODULE'),
   ('PIL.XbmImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\XbmImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\XbmImagePlugin.py',
    'PYMODULE'),
   ('PIL.XpmImagePlugin',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\XpmImagePlugin.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\XpmImagePlugin.py',
    'PYMODULE'),
   ('PIL._binary',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\_binary.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\_binary.py',
    'PYMODULE'),
   ('PIL._deprecate',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\_deprecate.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\_deprecate.py',
    'PYMODULE'),
   ('PIL._typing',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\_typing.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\_typing.py',
    'PYMODULE'),
   ('PIL._util',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\_util.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\_util.py',
    'PYMODULE'),
   ('PIL._version',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\_version.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\_version.py',
    'PYMODULE'),
   ('PIL.features',
-   'C:\\Custom Coding '
-   'Projects\\ImageResizerTool\\.venv\\Lib\\site-packages\\PIL\\features.py',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\PIL\\features.py',
    'PYMODULE'),
   ('__future__',
    'C:\\Users\\balde\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\__future__.py',
+   'PYMODULE'),
+  ('_aix_support',
+   'C:\\Users\\balde\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\_aix_support.py',
    'PYMODULE'),
   ('_ast_unparse',
    'C:\\Users\\balde\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\_ast_unparse.py',
@@ -390,6 +413,228 @@
    'PYMODULE'),
   ('csv',
    'C:\\Users\\balde\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\csv.py',
+   'PYMODULE'),
+  ('ctypes',
+   'C:\\Users\\balde\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\ctypes\\__init__.py',
+   'PYMODULE'),
+  ('ctypes._aix',
+   'C:\\Users\\balde\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\ctypes\\_aix.py',
+   'PYMODULE'),
+  ('ctypes._endian',
+   'C:\\Users\\balde\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\ctypes\\_endian.py',
+   'PYMODULE'),
+  ('ctypes._layout',
+   'C:\\Users\\balde\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\ctypes\\_layout.py',
+   'PYMODULE'),
+  ('ctypes.macholib',
+   'C:\\Users\\balde\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\ctypes\\macholib\\__init__.py',
+   'PYMODULE'),
+  ('ctypes.macholib.dyld',
+   'C:\\Users\\balde\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\ctypes\\macholib\\dyld.py',
+   'PYMODULE'),
+  ('ctypes.macholib.dylib',
+   'C:\\Users\\balde\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\ctypes\\macholib\\dylib.py',
+   'PYMODULE'),
+  ('ctypes.macholib.framework',
+   'C:\\Users\\balde\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\ctypes\\macholib\\framework.py',
+   'PYMODULE'),
+  ('ctypes.util',
+   'C:\\Users\\balde\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\ctypes\\util.py',
+   'PYMODULE'),
+  ('ctypes.wintypes',
+   'C:\\Users\\balde\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\ctypes\\wintypes.py',
+   'PYMODULE'),
+  ('customtkinter',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\__init__.py',
+   'PYMODULE'),
+  ('customtkinter.windows',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\windows\\__init__.py',
+   'PYMODULE'),
+  ('customtkinter.windows.ctk_input_dialog',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\windows\\ctk_input_dialog.py',
+   'PYMODULE'),
+  ('customtkinter.windows.ctk_tk',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\windows\\ctk_tk.py',
+   'PYMODULE'),
+  ('customtkinter.windows.ctk_toplevel',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\windows\\ctk_toplevel.py',
+   'PYMODULE'),
+  ('customtkinter.windows.widgets',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\windows\\widgets\\__init__.py',
+   'PYMODULE'),
+  ('customtkinter.windows.widgets.appearance_mode',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\windows\\widgets\\appearance_mode\\__init__.py',
+   'PYMODULE'),
+  ('customtkinter.windows.widgets.appearance_mode.appearance_mode_base_class',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\windows\\widgets\\appearance_mode\\appearance_mode_base_class.py',
+   'PYMODULE'),
+  ('customtkinter.windows.widgets.appearance_mode.appearance_mode_tracker',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\windows\\widgets\\appearance_mode\\appearance_mode_tracker.py',
+   'PYMODULE'),
+  ('customtkinter.windows.widgets.core_rendering',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\windows\\widgets\\core_rendering\\__init__.py',
+   'PYMODULE'),
+  ('customtkinter.windows.widgets.core_rendering.ctk_canvas',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\windows\\widgets\\core_rendering\\ctk_canvas.py',
+   'PYMODULE'),
+  ('customtkinter.windows.widgets.core_rendering.draw_engine',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\windows\\widgets\\core_rendering\\draw_engine.py',
+   'PYMODULE'),
+  ('customtkinter.windows.widgets.core_widget_classes',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\windows\\widgets\\core_widget_classes\\__init__.py',
+   'PYMODULE'),
+  ('customtkinter.windows.widgets.core_widget_classes.ctk_base_class',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\windows\\widgets\\core_widget_classes\\ctk_base_class.py',
+   'PYMODULE'),
+  ('customtkinter.windows.widgets.core_widget_classes.dropdown_menu',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\windows\\widgets\\core_widget_classes\\dropdown_menu.py',
+   'PYMODULE'),
+  ('customtkinter.windows.widgets.ctk_button',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\windows\\widgets\\ctk_button.py',
+   'PYMODULE'),
+  ('customtkinter.windows.widgets.ctk_checkbox',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\windows\\widgets\\ctk_checkbox.py',
+   'PYMODULE'),
+  ('customtkinter.windows.widgets.ctk_combobox',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\windows\\widgets\\ctk_combobox.py',
+   'PYMODULE'),
+  ('customtkinter.windows.widgets.ctk_entry',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\windows\\widgets\\ctk_entry.py',
+   'PYMODULE'),
+  ('customtkinter.windows.widgets.ctk_frame',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\windows\\widgets\\ctk_frame.py',
+   'PYMODULE'),
+  ('customtkinter.windows.widgets.ctk_label',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\windows\\widgets\\ctk_label.py',
+   'PYMODULE'),
+  ('customtkinter.windows.widgets.ctk_optionmenu',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\windows\\widgets\\ctk_optionmenu.py',
+   'PYMODULE'),
+  ('customtkinter.windows.widgets.ctk_progressbar',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\windows\\widgets\\ctk_progressbar.py',
+   'PYMODULE'),
+  ('customtkinter.windows.widgets.ctk_radiobutton',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\windows\\widgets\\ctk_radiobutton.py',
+   'PYMODULE'),
+  ('customtkinter.windows.widgets.ctk_scrollable_frame',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\windows\\widgets\\ctk_scrollable_frame.py',
+   'PYMODULE'),
+  ('customtkinter.windows.widgets.ctk_scrollbar',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\windows\\widgets\\ctk_scrollbar.py',
+   'PYMODULE'),
+  ('customtkinter.windows.widgets.ctk_segmented_button',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\windows\\widgets\\ctk_segmented_button.py',
+   'PYMODULE'),
+  ('customtkinter.windows.widgets.ctk_slider',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\windows\\widgets\\ctk_slider.py',
+   'PYMODULE'),
+  ('customtkinter.windows.widgets.ctk_switch',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\windows\\widgets\\ctk_switch.py',
+   'PYMODULE'),
+  ('customtkinter.windows.widgets.ctk_tabview',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\windows\\widgets\\ctk_tabview.py',
+   'PYMODULE'),
+  ('customtkinter.windows.widgets.ctk_textbox',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\windows\\widgets\\ctk_textbox.py',
+   'PYMODULE'),
+  ('customtkinter.windows.widgets.font',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\windows\\widgets\\font\\__init__.py',
+   'PYMODULE'),
+  ('customtkinter.windows.widgets.font.ctk_font',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\windows\\widgets\\font\\ctk_font.py',
+   'PYMODULE'),
+  ('customtkinter.windows.widgets.font.font_manager',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\windows\\widgets\\font\\font_manager.py',
+   'PYMODULE'),
+  ('customtkinter.windows.widgets.image',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\windows\\widgets\\image\\__init__.py',
+   'PYMODULE'),
+  ('customtkinter.windows.widgets.image.ctk_image',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\windows\\widgets\\image\\ctk_image.py',
+   'PYMODULE'),
+  ('customtkinter.windows.widgets.scaling',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\windows\\widgets\\scaling\\__init__.py',
+   'PYMODULE'),
+  ('customtkinter.windows.widgets.scaling.scaling_base_class',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\windows\\widgets\\scaling\\scaling_base_class.py',
+   'PYMODULE'),
+  ('customtkinter.windows.widgets.scaling.scaling_tracker',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\windows\\widgets\\scaling\\scaling_tracker.py',
+   'PYMODULE'),
+  ('customtkinter.windows.widgets.theme',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\windows\\widgets\\theme\\__init__.py',
+   'PYMODULE'),
+  ('customtkinter.windows.widgets.theme.theme_manager',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\windows\\widgets\\theme\\theme_manager.py',
+   'PYMODULE'),
+  ('customtkinter.windows.widgets.utility',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\windows\\widgets\\utility\\__init__.py',
+   'PYMODULE'),
+  ('customtkinter.windows.widgets.utility.utility_functions',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\customtkinter\\windows\\widgets\\utility\\utility_functions.py',
+   'PYMODULE'),
+  ('darkdetect',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\darkdetect\\__init__.py',
+   'PYMODULE'),
+  ('darkdetect._dummy',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\darkdetect\\_dummy.py',
+   'PYMODULE'),
+  ('darkdetect._linux_detect',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\darkdetect\\_linux_detect.py',
+   'PYMODULE'),
+  ('darkdetect._mac_detect',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\darkdetect\\_mac_detect.py',
+   'PYMODULE'),
+  ('darkdetect._windows_detect',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\darkdetect\\_windows_detect.py',
    'PYMODULE'),
   ('dataclasses',
    'C:\\Users\\balde\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\dataclasses.py',
@@ -601,6 +846,14 @@
   ('opcode',
    'C:\\Users\\balde\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\opcode.py',
    'PYMODULE'),
+  ('packaging',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\packaging\\__init__.py',
+   'PYMODULE'),
+  ('packaging.version',
+   'C:\\Custom Coding Projects\\Niche News '
+   'Scanner\\.venv\\Lib\\site-packages\\packaging\\version.py',
+   'PYMODULE'),
   ('pathlib',
    'C:\\Users\\balde\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\pathlib\\__init__.py',
    'PYMODULE'),
@@ -609,6 +862,9 @@
    'PYMODULE'),
   ('pickle',
    'C:\\Users\\balde\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\pickle.py',
+   'PYMODULE'),
+  ('platform',
+   'C:\\Users\\balde\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\platform.py',
    'PYMODULE'),
   ('pprint',
    'C:\\Users\\balde\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\pprint.py',
@@ -652,6 +908,9 @@
   ('subprocess',
    'C:\\Users\\balde\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\subprocess.py',
    'PYMODULE'),
+  ('sysconfig',
+   'C:\\Users\\balde\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\sysconfig\\__init__.py',
+   'PYMODULE'),
   ('tarfile',
    'C:\\Users\\balde\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\tarfile.py',
    'PYMODULE'),
@@ -678,6 +937,9 @@
    'PYMODULE'),
   ('tkinter.filedialog',
    'C:\\Users\\balde\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\tkinter\\filedialog.py',
+   'PYMODULE'),
+  ('tkinter.font',
+   'C:\\Users\\balde\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\tkinter\\font.py',
    'PYMODULE'),
   ('tkinter.messagebox',
    'C:\\Users\\balde\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\tkinter\\messagebox.py',
