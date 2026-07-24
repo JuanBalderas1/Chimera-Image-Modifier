@@ -2,17 +2,9 @@
 
 **Chimera Image Modifier** is a desktop image-processing application built with Python, CustomTkinter, and Pillow. It allows users to resize images individually or in bulk, convert between JPG and PNG formats, and manually create transparent PNG files using an interactive editing workspace.
 
-This is the first application in the **Chimera Project Series**, a growing collection of independently developed tools created under a shared visual identity.
+This is the first application in the **Chimera Project Series**, a collection of practical applications built to explore software development, user-interface design, and creative problem-solving.
 
----
-
-## Chimera Project Series
-
-The **Chimera Project Series** is a collection of practical applications built to explore software development, user-interface design, and creative problem-solving.
-
-Each project is designed to solve a focused problem while serving as an opportunity to experiment, improve, and build something worth sharing.
-
-**Chimera Image Modifier** is the first project in the series and establishes the visual and structural foundation for future Chimera applications.
+Each program is designed to solve a focused problem while serving as an opportunity for experimentation, self-improve, and building something worth sharing.
 
 ---
 
