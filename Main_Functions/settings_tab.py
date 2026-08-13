@@ -400,7 +400,14 @@ class SettingsTab(ctk.CTkFrame):
         theme_name,
     ):
         self.current_theme_name = theme_name
-        self.current_theme = THEMES[theme_name]
+
+        self.current_theme = THEMES[
+            theme_name
+        ]
+
+        ctk.set_appearance_mode(
+            self.current_theme["appearance"]
+        )
 
         self.apply_theme()
         self._update_status()
@@ -503,10 +510,6 @@ class SettingsTab(ctk.CTkFrame):
         theme = self.current_theme
         app = self.app
 
-        # ------------------------------------------
-        # Main application shell
-        # ------------------------------------------
-
         app.configure(
             fg_color=theme["window"]
         )
@@ -523,75 +526,52 @@ class SettingsTab(ctk.CTkFrame):
             text_color=theme["muted"]
         )
 
-        # ------------------------------------------
-        # Main tab container
-        # ------------------------------------------
-
         app.tabview.configure(
             fg_color=theme["window"],
             border_color=theme["border"],
             segmented_button_fg_color=theme["surface_alt"],
             segmented_button_selected_color=theme["accent"],
-            segmented_button_selected_hover_color=theme["accent_hover"],
-            segmented_button_unselected_color=theme["surface_alt"],
-            segmented_button_unselected_hover_color=theme["entry_border"],
+            segmented_button_selected_hover_color=theme[
+                "accent_hover"
+            ],
+            segmented_button_unselected_color=theme[
+                "surface_alt"
+            ],
+            segmented_button_unselected_hover_color=theme[
+                "entry_border"
+            ],
             text_color=theme["text"],
         )
 
-        # Explicitly theme the actual tab page backgrounds.
-        app.single_tab.configure(
-            fg_color=theme["window"]
-        )
-
-        app.bulk_tab.configure(
-            fg_color=theme["window"]
-        )
-
-        app.transparency_tab.configure(
-            fg_color=theme["window"]
-        )
-
-        app.settings_tab.configure(
-            fg_color=theme["window"]
-        )
-
-        # ------------------------------------------
-        # Theme only OUR component trees
-        # ------------------------------------------
-
         self._apply_theme_recursive(
-            app.single_image_tab
+            app
         )
 
-        self._apply_theme_recursive(
-            app.bulk_image_tab
-        )
+        # Tab-specific visual exceptions
+        if hasattr(
+            app,
+            "single_image_tab",
+        ):
+            app.single_image_tab.apply_theme_overrides(
+                theme
+            )
 
-        self._apply_theme_recursive(
-            app.transparency_image_tab
-        )
+        if hasattr(
+            app,
+            "bulk_image_tab",
+        ):
+            app.bulk_image_tab.apply_theme_overrides(
+                theme
+            )
 
-        self._apply_theme_recursive(
-            self
-        
-        )
-
-    # ------------------------------------------
-    # Tab-specific exceptions
-    # ------------------------------------------
-
-        app.single_image_tab.apply_theme_overrides(
-            theme
-        )
-
-        app.bulk_image_tab.apply_theme_overrides(
-            theme
-        )
-
-        app.transparency_image_tab.apply_theme_overrides(
-            theme,
-            self.base_font_size,
-        )
+        if hasattr(
+            app,
+            "transparency_image_tab",
+        ):
+            app.transparency_image_tab.apply_theme_overrides(
+                theme,
+                self.base_font_size,
+            )
 
         self.description_label.configure(
             text_color=theme["muted"]
@@ -740,17 +720,6 @@ class SettingsTab(ctk.CTkFrame):
                 pass
 
             self._apply_theme_recursive(
-                app.single_image_tab
+                child
             )
-
-            self._apply_theme_recursive(
-                app.bulk_image_tab
-            )
-
-            self._apply_theme_recursive(
-                app.transparency_image_tab
-            )
-
-            self._apply_theme_recursive(
-                self
-            )
+            

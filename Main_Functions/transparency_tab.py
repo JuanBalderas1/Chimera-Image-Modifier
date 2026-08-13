@@ -3,7 +3,7 @@ import tkinter as tk
 from tkinter import filedialog, messagebox
 
 import customtkinter as ctk
-from PIL import Image, ImageDraw, ImageTk
+from PIL import Image, ImageDraw, ImageFilter, ImageOps, ImageTk
 
 
 DEFAULT_OUTPUT_FOLDER = "Modified Images"
@@ -22,12 +22,12 @@ class TransparencyTab(ctk.CTkFrame):
         base_font_size,
         output_folder=DEFAULT_OUTPUT_FOLDER,
     ):
-        super().__init__(
-            parent,
-            fg_color="transparent",
-        )
+        super().__init__(parent, fg_color="transparent")
 
+        # --------------------------------------------------
         # Shared application resources
+        # --------------------------------------------------
+
         self.font_normal = font_normal
         self.font_small = font_small
         self.font_bold = font_bold
@@ -43,6 +43,7 @@ class TransparencyTab(ctk.CTkFrame):
         self._build_interface()
 
         self._update_history_buttons()
+        self._update_crop_buttons()
         self._draw_placeholder()
 
     # ==================================================
@@ -68,6 +69,10 @@ class TransparencyTab(ctk.CTkFrame):
             value="100%"
         )
 
+        self.smoothing_var = tk.IntVar(
+            value=2
+        )
+
     # ==================================================
     # Editor state
     # ==================================================
@@ -86,28 +91,27 @@ class TransparencyTab(ctk.CTkFrame):
         self.offset_x = 0
         self.offset_y = 0
 
+        # Brush state
         self.last_point = None
         self.stroke_snapshot = None
 
+        # History
         self.undo_stack = []
         self.redo_stack = []
+        self.history_limit = 20
 
-        self.history_limit = 30
+        # Crop state
+        self.crop_mode = False
+        self.crop_start = None
+        self.crop_end = None
 
     # ==================================================
     # Workspace
     # ==================================================
 
     def _configure_workspace(self):
-        self.master.grid_columnconfigure(
-            0,
-            weight=1,
-        )
-
-        self.master.grid_rowconfigure(
-            0,
-            weight=1,
-        )
+        self.master.grid_columnconfigure(0, weight=1)
+        self.master.grid_rowconfigure(0, weight=1)
 
         self.grid(
             row=0,
@@ -138,9 +142,9 @@ class TransparencyTab(ctk.CTkFrame):
         self._build_controls_column()
         self._build_editor_column()
 
-    # --------------------------------------------------
+    # ==================================================
     # Left controls
-    # --------------------------------------------------
+    # ==================================================
 
     def _build_controls_column(self):
         self.controls = ctk.CTkScrollableFrame(
@@ -165,10 +169,11 @@ class TransparencyTab(ctk.CTkFrame):
 
         self._build_input_card()
         self._build_brush_card()
+        self._build_image_tools_card()
         self._build_save_card()
 
     # --------------------------------------------------
-    # Image input
+    # 1. Image input
     # --------------------------------------------------
 
     def _build_input_card(self):
@@ -223,7 +228,7 @@ class TransparencyTab(ctk.CTkFrame):
         )
 
     # --------------------------------------------------
-    # Brush controls
+    # 2. Transparency brush
     # --------------------------------------------------
 
     def _build_brush_card(self):
@@ -241,9 +246,9 @@ class TransparencyTab(ctk.CTkFrame):
         self.help_label = ctk.CTkLabel(
             self.brush_card,
             text=(
-                "Choose Erase to remove pixels or Restore "
-                "to paint them back. The checkerboard "
-                "represents true transparency."
+                "Choose Erase to remove pixels or Restore to "
+                "paint them back. The checkerboard represents "
+                "true transparency."
             ),
             font=self.font_small,
             justify="left",
@@ -272,11 +277,7 @@ class TransparencyTab(ctk.CTkFrame):
         self.tool_menu = self._option_menu(
             self.brush_card,
             self.tool_var,
-            [
-                "Erase",
-                "Restore",
-            ],
-            self.on_tool_changed,
+            ["Erase", "Restore"],
         )
 
         self.tool_menu.grid(
@@ -382,14 +383,173 @@ class TransparencyTab(ctk.CTkFrame):
         )
 
     # --------------------------------------------------
-    # Save controls
+    # 3. Image tools
+    # --------------------------------------------------
+
+    def _build_image_tools_card(self):
+        self.image_tools_card = self._create_card(
+            self.controls,
+            "3  Image tools",
+            2,
+        )
+
+        self.image_tools_card.grid_columnconfigure(
+            0,
+            weight=1,
+        )
+
+    # ------------------------------------------
+    # Cropping
+    # ------------------------------------------
+
+        self._label(
+            self.image_tools_card,
+            "Crop",
+        ).grid(
+            row=1,
+            column=0,
+            padx=18,
+            pady=(6, 4),
+            sticky="w",
+        )
+
+        self.crop_help = ctk.CTkLabel(
+            self.image_tools_card,
+            text=(
+                "Start Crop, then drag a rectangle directly "
+                "over the image."
+            ),
+            font=self.font_small,
+            justify="left",
+            wraplength=300,
+        )
+
+        self.crop_help.grid(
+            row=2,
+            column=0,
+            padx=18,
+            pady=(0, 8),
+            sticky="w",
+        )
+
+        self.start_crop_button = self._button(
+            self.image_tools_card,
+            "Start Crop",
+            self.start_crop,
+            secondary=True,
+        )
+
+        self.start_crop_button.grid(
+            row=3,
+            column=0,
+            padx=18,
+            pady=(0, 8),
+            sticky="ew",
+        )
+
+        self.crop_action_row = ctk.CTkFrame(
+            self.image_tools_card,
+            fg_color="transparent",
+        )
+
+        self.crop_action_row.grid(
+            row=4,
+            column=0,
+            padx=18,
+            pady=(0, 12),
+            sticky="ew",
+        )
+
+        self.crop_action_row.grid_columnconfigure(
+            (0, 1),
+            weight=1,
+        )
+
+        self.apply_crop_button = self._button(
+            self.crop_action_row,
+            "Apply Crop",
+            self.apply_crop,
+        )
+
+        self.apply_crop_button.grid(
+            row=0,
+            column=0,
+            padx=(0, 5),
+            sticky="ew",
+        )
+
+        self.cancel_crop_button = self._button(
+            self.crop_action_row,
+            "Cancel",
+            self.cancel_crop,
+            secondary=True,
+        )
+
+        self.cancel_crop_button.grid(
+            row=0,
+            column=1,
+            padx=(5, 0),
+            sticky="ew",
+        )
+
+    # ------------------------------------------
+    # Edge smoothing
+    # ------------------------------------------
+
+        self.smoothing_label = self._label(
+            self.image_tools_card,
+            "Edge smoothing: 2 px",
+        )
+
+        self.smoothing_label.grid(
+            row=5,
+            column=0,
+            padx=18,
+            pady=(2, 4),
+            sticky="w",
+        )
+
+        self.smoothing_slider = ctk.CTkSlider(
+            self.image_tools_card,
+            from_=1,
+            to=12,
+            number_of_steps=11,
+            variable=self.smoothing_var,
+            command=self.on_smoothing_changed,
+        )
+
+        self.smoothing_slider.grid(
+            row=6,
+            column=0,
+            padx=18,
+            pady=(0, 8),
+            sticky="ew",
+        )
+
+        self.smooth_button = self._button(
+            self.image_tools_card,
+            "Smooth Transparency Edges",
+            self.smooth_edges,
+            secondary=True,
+        )
+
+        self.smooth_button.grid(
+            row=7,
+            column=0,
+            padx=18,
+            pady=(0, 18),
+            sticky="ew",
+        )
+
+    # --------------------------------------------------
+    # 4. Save image
     # --------------------------------------------------
 
     def _build_save_card(self):
         self.save_card = self._create_card(
             self.controls,
-            "3  Save transparent PNG",
-            2,
+            "4  Save transparent PNG",
+            3,
         )
 
         self.save_card.grid_columnconfigure(
@@ -454,7 +614,7 @@ class TransparencyTab(ctk.CTkFrame):
         )
 
     # ==================================================
-    # Editor / canvas column
+    # Editor column
     # ==================================================
 
     def _build_editor_column(self):
@@ -517,6 +677,8 @@ class TransparencyTab(ctk.CTkFrame):
             sticky="ew",
         )
 
+        # Let the center stretch so the transform buttons
+        # stay pushed to the far right. 
         self.zoom_row.grid_columnconfigure(
             3,
             weight=1,
@@ -550,11 +712,17 @@ class TransparencyTab(ctk.CTkFrame):
             padx=5,
         )
 
+        self.zoom_in_button.grid(
+            row=0,
+            column=1,
+            padx=5,
+        )
+
         self.zoom_fit_button = self._button(
             self.zoom_row,
             "Fit",
             self.fit_to_canvas,
-            width=70,
+            width=60,
             secondary=True,
         )
 
@@ -564,6 +732,77 @@ class TransparencyTab(ctk.CTkFrame):
             padx=5,
         )
 
+    # ------------------------------------------
+    # Image transforms - right side
+    # ------------------------------------------
+
+        self.rotate_left_button = self._button(
+            self.zoom_row,
+            "Rotate Left",
+            self.rotate_left,
+            width=82,
+            secondary=True,
+        )
+
+        self.rotate_left_button.grid(
+            row=0,
+            column=4,
+            padx=(10, 4),
+        )
+
+        self.rotate_right_button = self._button(
+            self.zoom_row,
+            "Rotate Right",
+            self.rotate_right,
+            width=88,
+            secondary=True,
+        )
+
+
+        self.rotate_right_button.grid(
+            row=0,
+            column=5,
+            padx=4,
+        )
+
+        self.flip_x_button = self._button(
+            self.zoom_row,
+            "X-Flip",
+            self.flip_x_axis,
+            width=62,
+            secondary=True,
+        )
+
+        self.flip_x_button.grid(
+            row=0,
+            column=6,
+            padx=4,
+        )
+
+        self.flip_y_button = self._button(
+            self.zoom_row,
+            "Y-Flip",
+            self.flip_y_axis,
+            width=62,
+            secondary=True,
+        )
+
+        self.flip_y_button.grid(
+            row=0,
+            column=7,
+            padx=(4, 0),
+        )
+
+        self.flip_y_button.grid(
+            row=0,
+            column=7,
+            padx=(4, 0),
+        )
+
+    # ------------------------------------------
+    # Zoom percentage
+    # ------------------------------------------
+
         self.zoom_label = ctk.CTkLabel(
             self.zoom_row,
             textvariable=self.zoom_label_var,
@@ -572,7 +811,7 @@ class TransparencyTab(ctk.CTkFrame):
 
         self.zoom_label.grid(
             row=0,
-            column=4,
+            column=8,
             padx=(10, 0),
             sticky="e",
         )
@@ -659,17 +898,17 @@ class TransparencyTab(ctk.CTkFrame):
 
         self.canvas.bind(
             "<ButtonPress-1>",
-            self._start_stroke,
+            self._start_canvas_action,
         )
 
         self.canvas.bind(
             "<B1-Motion>",
-            self._continue_stroke,
+            self._continue_canvas_action,
         )
 
         self.canvas.bind(
             "<ButtonRelease-1>",
-            self._end_stroke,
+            self._end_canvas_action,
         )
 
         self.canvas.bind(
@@ -687,12 +926,14 @@ class TransparencyTab(ctk.CTkFrame):
             self._on_ctrl_mousewheel,
         )
 
-        self.bind_all(
+        root = self.winfo_toplevel()
+
+        root.bind(
             "<Control-z>",
             lambda _event: self.undo(),
         )
 
-        self.bind_all(
+        root.bind(
             "<Control-y>",
             lambda _event: self.redo(),
         )
@@ -811,21 +1052,15 @@ class TransparencyTab(ctk.CTkFrame):
         )
 
     # ==================================================
-    # Load image
+    # Image loading
     # ==================================================
 
     def browse_image(self):
         file_path = filedialog.askopenfilename(
             title="Select an image for transparency editing",
             filetypes=[
-                (
-                    "Image Files",
-                    "*.jpg *.jpeg *.png",
-                ),
-                (
-                    "All Files",
-                    "*.*",
-                ),
+                ("Image Files", "*.jpg *.jpeg *.png"),
+                ("All Files", "*.*"),
             ],
         )
 
@@ -851,6 +1086,10 @@ class TransparencyTab(ctk.CTkFrame):
             self.undo_stack.clear()
             self.redo_stack.clear()
 
+            self.cancel_crop(
+                render=False
+            )
+
             self._update_history_buttons()
             self._render_editor()
 
@@ -861,25 +1100,56 @@ class TransparencyTab(ctk.CTkFrame):
             )
 
     # ==================================================
-    # Brush controls
+    # History
     # ==================================================
 
-    def on_brush_changed(self, value):
-        brush_size = int(
-            float(value)
+    def _capture_state(self):
+        if (
+            self.source_image is None
+            or self.mask is None
+        ):
+            return None
+
+        # source_image itself is never modified in-place.
+        # Keeping its reference saves memory during brush edits.
+        return (
+            self.source_image,
+            self.mask.copy(),
         )
 
-        self.brush_label.configure(
-            text=f"Brush size: {brush_size} px"
+    def _restore_state(
+        self,
+        state,
+    ):
+        if state is None:
+            return
+
+        self.source_image = state[0]
+        self.mask = state[1].copy()
+
+        self.zoom = 1.0
+
+        self.cancel_crop(
+            render=False
         )
 
-    def on_tool_changed(self, _tool_name):
-        # tool_var already contains the selected mode.
-        pass
+    def _push_history(
+        self,
+        snapshot,
+    ):
+        if snapshot is None:
+            return
 
-    # ==================================================
-    # Undo / redo
-    # ==================================================
+        self.undo_stack.append(
+            snapshot
+        )
+
+        if len(self.undo_stack) > self.history_limit:
+            self.undo_stack.pop(0)
+
+        self.redo_stack.clear()
+
+        self._update_history_buttons()
 
     def _update_history_buttons(self):
         self.undo_button.configure(
@@ -898,86 +1168,61 @@ class TransparencyTab(ctk.CTkFrame):
             )
         )
 
-    def _push_history(self, snapshot):
-        if snapshot is None:
-            return
-
-        self.undo_stack.append(
-            snapshot
-        )
-
-        if len(self.undo_stack) > self.history_limit:
-            self.undo_stack.pop(0)
-
-        self.redo_stack.clear()
-
-        self._update_history_buttons()
-
     def undo(self):
-        if self.mask is None:
-            return
-
         if not self.undo_stack:
             return
 
-        self.redo_stack.append(
-            self.mask.copy()
-        )
+        current_state = self._capture_state()
 
-        self.mask = self.undo_stack.pop()
+        if current_state is not None:
+            self.redo_stack.append(
+                current_state
+            )
+
+        previous_state = self.undo_stack.pop()
+
+        self._restore_state(
+            previous_state
+        )
 
         self._update_history_buttons()
         self._render_editor()
 
     def redo(self):
-        if self.mask is None:
-            return
-
         if not self.redo_stack:
             return
 
-        self.undo_stack.append(
-            self.mask.copy()
-        )
+        current_state = self._capture_state()
 
-        self.mask = self.redo_stack.pop()
+        if current_state is not None:
+            self.undo_stack.append(
+                current_state
+            )
+
+        next_state = self.redo_stack.pop()
+
+        self._restore_state(
+            next_state
+        )
 
         self._update_history_buttons()
         self._render_editor()
 
     # ==================================================
-    # Zoom
+    # Brush controls
     # ==================================================
 
-    def zoom_in(self):
-        if self.source_image is None:
-            return
-
-        self.zoom = min(
-            8.0,
-            self.zoom * 1.25,
+    def on_brush_changed(
+        self,
+        value,
+    ):
+        brush_size = int(
+            float(value)
         )
 
-        self._render_editor()
-
-    def zoom_out(self):
-        if self.source_image is None:
-            return
-
-        self.zoom = max(
-            0.25,
-            self.zoom / 1.25,
+        self.brush_label.configure(
+            text=f"Brush size: {brush_size} px"
         )
-
-        self._render_editor()
-
-    def fit_to_canvas(self):
-        self.zoom = 1.0
-        self._render_editor()
-
-    # ==================================================
-    # Reset transparency
-    # ==================================================
 
     def reset_mask(self):
         if self.source_image is None:
@@ -987,7 +1232,9 @@ class TransparencyTab(ctk.CTkFrame):
             )
             return
 
-        previous_mask = self.mask.copy()
+        self._push_history(
+            self._capture_state()
+        )
 
         self.mask = Image.new(
             "L",
@@ -995,324 +1242,418 @@ class TransparencyTab(ctk.CTkFrame):
             255,
         )
 
+        self._render_editor()
+
+    # ==================================================
+    # Rotation
+    # ==================================================
+
+    def rotate_left(self):
+        if not self._require_image():
+            return
+
         self._push_history(
-            previous_mask
+            self._capture_state()
+        )
+
+        self.source_image = self.source_image.transpose(
+            Image.Transpose.ROTATE_90
+        )
+
+        self.mask = self.mask.transpose(
+            Image.Transpose.ROTATE_90
+        )
+
+        self.cancel_crop(
+            render=False
+        )
+
+        self._render_editor()
+
+    def rotate_right(self):
+        if not self._require_image():
+            return
+
+        self._push_history(
+            self._capture_state()
+        )
+
+        self.source_image = self.source_image.transpose(
+            Image.Transpose.ROTATE_270
+        )
+
+        self.mask = self.mask.transpose(
+            Image.Transpose.ROTATE_270
+        )
+
+        self.cancel_crop(
+            render=False
         )
 
         self._render_editor()
 
     # ==================================================
-    # Mouse wheel / canvas movement
+    # Flipping
     # ==================================================
 
-    def _on_mousewheel(self, event):
-        direction = (
-            -1
-            if event.delta > 0
-            else 1
-        )
+    def flip_x_axis(self):
+        """
+        Flip across the X-axis.
 
-        self.canvas.yview_scroll(
-            direction * 3,
-            "units",
-        )
+        The top and bottom of the image trade places.
+        """
 
-        return "break"
-
-    def _on_shift_mousewheel(self, event):
-        direction = (
-            -1
-            if event.delta > 0
-            else 1
-        )
-
-        self.canvas.xview_scroll(
-            direction * 3,
-            "units",
-        )
-
-        return "break"
-
-    def _on_ctrl_mousewheel(self, event):
-        if event.delta > 0:
-            self.zoom_in()
-
-        elif event.delta < 0:
-            self.zoom_out()
-
-        return "break"
-
-    # ==================================================
-    # Canvas resizing / placeholder
-    # ==================================================
-
-    def _on_canvas_resize(self, _event=None):
-        if self.source_image is not None:
-            self.after_idle(
-                self._render_editor
-            )
-
-        else:
-            self._draw_placeholder()
-
-    def _draw_placeholder(self):
-        self.canvas.delete("all")
-
-        width = max(
-            1,
-            self.canvas.winfo_width(),
-        )
-
-        height = max(
-            1,
-            self.canvas.winfo_height(),
-        )
-
-        self.canvas.create_text(
-            width // 2,
-            height // 2,
-            text=(
-                "Load an image to begin "
-                "removing its background"
-            ),
-            fill=self.current_theme["muted"],
-            font=(
-                "Segoe UI",
-                self.base_font_size,
-            ),
-            width=max(
-                200,
-                width - 80,
-            ),
-            justify="center",
-        )
-
-    # ==================================================
-    # Transparency rendering
-    # ==================================================
-
-    @staticmethod
-    def _make_checkerboard(
-        width,
-        height,
-        square=16,
-    ):
-        board = Image.new(
-            "RGBA",
-            (width, height),
-            (205, 205, 205, 255),
-        )
-
-        draw = ImageDraw.Draw(
-            board
-        )
-
-        alternate = (
-            155,
-            155,
-            155,
-            255,
-        )
-
-        for y in range(
-            0,
-            height,
-            square,
-        ):
-            for x in range(
-                0,
-                width,
-                square,
-            ):
-                if (
-                    (x // square)
-                    + (y // square)
-                ) % 2:
-                    draw.rectangle(
-                        (
-                            x,
-                            y,
-                            min(x + square, width),
-                            min(y + square, height),
-                        ),
-                        fill=alternate,
-                    )
-
-        return board
-
-    def _render_editor(self):
-        if (
-            self.source_image is None
-            or self.mask is None
-        ):
-            self._draw_placeholder()
+        if not self._require_image():
             return
 
-        canvas_width = max(
-            100,
-            self.canvas.winfo_width(),
+        self._push_history(
+            self._capture_state()
         )
 
-        canvas_height = max(
-            100,
-            self.canvas.winfo_height(),
+        self.source_image = ImageOps.flip(
+            self.source_image
         )
 
-        source_width, source_height = (
-            self.source_image.size
-        )
-
-        self.fit_scale = min(
-            (canvas_width - 30) / source_width,
-            (canvas_height - 30) / source_height,
-        )
-
-        self.fit_scale = max(
-            0.01,
-            self.fit_scale,
-        )
-
-        self.scale = (
-            self.fit_scale
-            * self.zoom
-        )
-
-        self.zoom_label_var.set(
-            f"{int(self.zoom * 100)}%"
-        )
-
-        display_size = (
-            max(
-                1,
-                int(source_width * self.scale),
-            ),
-            max(
-                1,
-                int(source_height * self.scale),
-            ),
-        )
-
-        self.offset_x = max(
-            0,
-            (
-                canvas_width
-                - display_size[0]
-            ) // 2,
-        )
-
-        self.offset_y = max(
-            0,
-            (
-                canvas_height
-                - display_size[1]
-            ) // 2,
-        )
-
-        edited_image = (
-            self.source_image.copy()
-        )
-
-        edited_image.putalpha(
+        self.mask = ImageOps.flip(
             self.mask
         )
 
-        resized_image = edited_image.resize(
-            display_size,
-            Image.Resampling.LANCZOS,
+        self.cancel_crop(
+            render=False
         )
 
-        checkerboard = self._make_checkerboard(
-            *display_size
+        self._render_editor()
+
+    def flip_y_axis(self):
+        """
+        Flip across the Y-axis.
+
+        The left and right sides of the image trade places.
+        """
+
+        if not self._require_image():
+            return
+
+        self._push_history(
+            self._capture_state()
         )
 
-        checkerboard.alpha_composite(
-            resized_image
+        self.source_image = ImageOps.mirror(
+            self.source_image
         )
 
-        self.display_image = checkerboard
-
-        self.tk_image = ImageTk.PhotoImage(
-            checkerboard
+        self.mask = ImageOps.mirror(
+            self.mask
         )
 
-        self.canvas.delete("all")
-
-        self.canvas.create_image(
-            self.offset_x,
-            self.offset_y,
-            anchor="nw",
-            image=self.tk_image,
+        self.cancel_crop(
+            render=False
         )
 
-        content_width = max(
-            canvas_width,
-            self.offset_x + display_size[0],
+        self._render_editor()
+
+    # ==================================================
+    # Edge smoothing
+    # ==================================================
+
+    def on_smoothing_changed(
+        self,
+        value,
+    ):
+        strength = int(
+            float(value)
         )
 
-        content_height = max(
-            canvas_height,
-            self.offset_y + display_size[1],
+        self.smoothing_label.configure(
+            text=f"Edge smoothing: {strength} px"
         )
 
-        self.canvas.configure(
-            scrollregion=(
-                0,
-                0,
-                content_width,
-                content_height,
+    def smooth_edges(self):
+        if not self._require_image():
+            return
+
+        self._push_history(
+            self._capture_state()
+        )
+
+        strength = max(
+            1,
+            int(self.smoothing_var.get()),
+        )
+
+        # Gaussian blur applied only to the alpha mask.
+        #
+        # Fully opaque and transparent areas remain intact
+        # while hard transparency boundaries gain a softer,
+        # anti-aliased transition.
+        self.mask = self.mask.filter(
+            ImageFilter.GaussianBlur(
+                radius=strength
             )
         )
 
+        self._render_editor()
+
     # ==================================================
-    # Canvas-to-image coordinates
+    # Cropping
     # ==================================================
 
-    def _canvas_to_image_point(
+    def start_crop(self):
+        if not self._require_image():
+            return
+
+        self.crop_mode = True
+        self.crop_start = None
+        self.crop_end = None
+
+        self.canvas.configure(
+            cursor="crosshair"
+        )
+
+        self._update_crop_buttons()
+        self._render_editor()
+
+    def cancel_crop(
         self,
-        canvas_x,
-        canvas_y,
+        render=True,
     ):
-        if self.source_image is None:
-            return None
+        self.crop_mode = False
+        self.crop_start = None
+        self.crop_end = None
 
-        scrolled_x = self.canvas.canvasx(
-            canvas_x
-        )
-
-        scrolled_y = self.canvas.canvasy(
-            canvas_y
-        )
-
-        image_x = (
-            scrolled_x
-            - self.offset_x
-        ) / self.scale
-
-        image_y = (
-            scrolled_y
-            - self.offset_y
-        ) / self.scale
-
-        width, height = (
-            self.source_image.size
-        )
-
-        if not (
-            0 <= image_x < width
-            and 0 <= image_y < height
+        if hasattr(
+            self,
+            "canvas",
         ):
-            return None
+            self.canvas.configure(
+                cursor="crosshair"
+            )
 
-        return (
-            int(image_x),
-            int(image_y),
+        if hasattr(
+            self,
+            "apply_crop_button",
+        ):
+            self._update_crop_buttons()
+
+        if (
+            render
+            and self.source_image is not None
+        ):
+            self._render_editor()
+
+    def _update_crop_buttons(self):
+        has_selection = (
+            self.crop_mode
+            and self.crop_start is not None
+            and self.crop_end is not None
+            and self.crop_start != self.crop_end
         )
 
+        self.apply_crop_button.configure(
+            state=(
+                "normal"
+                if has_selection
+                else "disabled"
+            )
+        )
+
+        self.cancel_crop_button.configure(
+            state=(
+                "normal"
+                if self.crop_mode
+                else "disabled"
+            )
+        )
+
+        self.start_crop_button.configure(
+            state=(
+                "disabled"
+                if self.crop_mode
+                else "normal"
+            )
+        )
+
+    def apply_crop(self):
+        if (
+            not self.crop_mode
+            or self.crop_start is None
+            or self.crop_end is None
+        ):
+            return
+
+        width, height = self.source_image.size
+
+        x1, y1 = self.crop_start
+        x2, y2 = self.crop_end
+
+        left = max(
+            0,
+            min(x1, x2),
+        )
+
+        top = max(
+            0,
+            min(y1, y2),
+        )
+
+        right = min(
+            width,
+            max(x1, x2) + 1,
+        )
+
+        bottom = min(
+            height,
+            max(y1, y2) + 1,
+        )
+
+        if (
+            right - left < 2
+            or bottom - top < 2
+        ):
+            messagebox.showerror(
+                "Invalid Crop",
+                "The selected crop area is too small.",
+            )
+            return
+
+        self._push_history(
+            self._capture_state()
+        )
+
+        crop_box = (
+            left,
+            top,
+            right,
+            bottom,
+        )
+
+        self.source_image = self.source_image.crop(
+            crop_box
+        )
+
+        self.mask = self.mask.crop(
+            crop_box
+        )
+
+        self.zoom = 1.0
+
+        self.cancel_crop(
+            render=False
+        )
+
+        self._render_editor()
+
     # ==================================================
-    # Brush strokes
+    # Canvas action dispatcher
     # ==================================================
 
-    def _start_stroke(self, event):
+    def _start_canvas_action(
+        self,
+        event,
+    ):
+        if self.crop_mode:
+            self._start_crop_selection(
+                event
+            )
+        else:
+            self._start_stroke(
+                event
+            )
+
+    def _continue_canvas_action(
+        self,
+        event,
+    ):
+        if self.crop_mode:
+            self._continue_crop_selection(
+                event
+            )
+        else:
+            self._continue_stroke(
+                event
+            )
+
+    def _end_canvas_action(
+        self,
+        event,
+    ):
+        if self.crop_mode:
+            self._end_crop_selection(
+                event
+            )
+        else:
+            self._end_stroke(
+                event
+            )
+
+    # ==================================================
+    # Crop selection events
+    # ==================================================
+
+    def _start_crop_selection(
+        self,
+        event,
+    ):
+        point = self._canvas_to_image_point(
+            event.x,
+            event.y,
+        )
+
+        if point is None:
+            return
+
+        self.crop_start = point
+        self.crop_end = point
+
+        self._update_crop_buttons()
+        self._render_editor()
+
+    def _continue_crop_selection(
+        self,
+        event,
+    ):
+        if self.crop_start is None:
+            return
+
+        point = self._canvas_to_image_point(
+            event.x,
+            event.y,
+        )
+
+        if point is None:
+            return
+
+        self.crop_end = point
+
+        self._update_crop_buttons()
+        self._render_editor()
+
+    def _end_crop_selection(
+        self,
+        event,
+    ):
+        if self.crop_start is None:
+            return
+
+        point = self._canvas_to_image_point(
+            event.x,
+            event.y,
+        )
+
+        if point is not None:
+            self.crop_end = point
+
+        self._update_crop_buttons()
+        self._render_editor()
+
+    # ==================================================
+    # Brush stroke events
+    # ==================================================
+
+    def _start_stroke(
+        self,
+        event,
+    ):
         point = self._canvas_to_image_point(
             event.x,
             event.y,
@@ -1322,7 +1663,7 @@ class TransparencyTab(ctk.CTkFrame):
 
         if point is not None:
             self.stroke_snapshot = (
-                self.mask.copy()
+                self._capture_state()
             )
 
             self._paint_line(
@@ -1330,7 +1671,10 @@ class TransparencyTab(ctk.CTkFrame):
                 point,
             )
 
-    def _continue_stroke(self, event):
+    def _continue_stroke(
+        self,
+        event,
+    ):
         point = self._canvas_to_image_point(
             event.x,
             event.y,
@@ -1351,7 +1695,10 @@ class TransparencyTab(ctk.CTkFrame):
 
         self.last_point = point
 
-    def _end_stroke(self, _event):
+    def _end_stroke(
+        self,
+        _event,
+    ):
         if self.stroke_snapshot is not None:
             self._push_history(
                 self.stroke_snapshot
@@ -1411,18 +1758,425 @@ class TransparencyTab(ctk.CTkFrame):
         self._render_editor()
 
     # ==================================================
-    # Save transparent PNG
+    # Zoom
     # ==================================================
 
-    def save_png(self):
+    def zoom_in(self):
+        if self.source_image is None:
+            return
+
+        self.zoom = min(
+            8.0,
+            self.zoom * 1.25,
+        )
+
+        self._render_editor()
+
+    def zoom_out(self):
+        if self.source_image is None:
+            return
+
+        self.zoom = max(
+            0.25,
+            self.zoom / 1.25,
+        )
+
+        self._render_editor()
+
+    def fit_to_canvas(self):
+        self.zoom = 1.0
+        self._render_editor()
+
+    # ==================================================
+    # Mouse wheel
+    # ==================================================
+
+    def _on_mousewheel(
+        self,
+        event,
+    ):
+        direction = (
+            -1
+            if event.delta > 0
+            else 1
+        )
+
+        self.canvas.yview_scroll(
+            direction * 3,
+            "units",
+        )
+
+        return "break"
+
+    def _on_shift_mousewheel(
+        self,
+        event,
+    ):
+        direction = (
+            -1
+            if event.delta > 0
+            else 1
+        )
+
+        self.canvas.xview_scroll(
+            direction * 3,
+            "units",
+        )
+
+        return "break"
+
+    def _on_ctrl_mousewheel(
+        self,
+        event,
+    ):
+        if event.delta > 0:
+            self.zoom_in()
+
+        elif event.delta < 0:
+            self.zoom_out()
+
+        return "break"
+
+    # ==================================================
+    # Canvas resizing / placeholder
+    # ==================================================
+
+    def _on_canvas_resize(
+        self,
+        _event=None,
+    ):
+        if self.source_image is not None:
+            self.after_idle(
+                self._render_editor
+            )
+        else:
+            self._draw_placeholder()
+
+    def _draw_placeholder(self):
+        self.canvas.delete(
+            "all"
+        )
+
+        width = max(
+            1,
+            self.canvas.winfo_width(),
+        )
+
+        height = max(
+            1,
+            self.canvas.winfo_height(),
+        )
+
+        self.canvas.create_text(
+            width // 2,
+            height // 2,
+            text=(
+                "Load an image to begin "
+                "removing its background"
+            ),
+            fill=self.current_theme["muted"],
+            font=(
+                "Segoe UI",
+                self.base_font_size,
+            ),
+            width=max(
+                200,
+                width - 80,
+            ),
+            justify="center",
+        )
+
+    # ==================================================
+    # Checkerboard
+    # ==================================================
+
+    @staticmethod
+    def _make_checkerboard(
+        width,
+        height,
+        square=16,
+    ):
+        board = Image.new(
+            "RGBA",
+            (width, height),
+            (205, 205, 205, 255),
+        )
+
+        draw = ImageDraw.Draw(
+            board
+        )
+
+        alternate = (
+            155,
+            155,
+            155,
+            255,
+        )
+
+        for y in range(
+            0,
+            height,
+            square,
+        ):
+            for x in range(
+                0,
+                width,
+                square,
+            ):
+                if (
+                    (x // square)
+                    + (y // square)
+                ) % 2:
+                    draw.rectangle(
+                        (
+                            x,
+                            y,
+                            min(x + square, width),
+                            min(y + square, height),
+                        ),
+                        fill=alternate,
+                    )
+
+        return board
+
+    # ==================================================
+    # Rendering
+    # ==================================================
+
+    def _render_editor(self):
         if (
             self.source_image is None
             or self.mask is None
         ):
-            messagebox.showerror(
-                "No Image Loaded",
-                "Load and edit an image before saving.",
+            self._draw_placeholder()
+            return
+
+        canvas_width = max(
+            100,
+            self.canvas.winfo_width(),
+        )
+
+        canvas_height = max(
+            100,
+            self.canvas.winfo_height(),
+        )
+
+        source_width, source_height = (
+            self.source_image.size
+        )
+
+        self.fit_scale = min(
+            (canvas_width - 30) / source_width,
+            (canvas_height - 30) / source_height,
+        )
+
+        self.fit_scale = max(
+            0.01,
+            self.fit_scale,
+        )
+
+        self.scale = (
+            self.fit_scale
+            * self.zoom
+        )
+
+        self.zoom_label_var.set(
+            f"{int(self.zoom * 100)}%"
+        )
+
+        display_size = (
+            max(
+                1,
+                int(source_width * self.scale),
+            ),
+            max(
+                1,
+                int(source_height * self.scale),
+            ),
+        )
+
+        self.offset_x = max(
+            0,
+            (canvas_width - display_size[0]) // 2,
+        )
+
+        self.offset_y = max(
+            0,
+            (canvas_height - display_size[1]) // 2,
+        )
+
+        edited_image = (
+            self.source_image.copy()
+        )
+
+        edited_image.putalpha(
+            self.mask
+        )
+
+        resized_image = edited_image.resize(
+            display_size,
+            Image.Resampling.LANCZOS,
+        )
+
+        checkerboard = self._make_checkerboard(
+            *display_size
+        )
+
+        checkerboard.alpha_composite(
+            resized_image
+        )
+
+        self.display_image = checkerboard
+
+        self.tk_image = ImageTk.PhotoImage(
+            checkerboard
+        )
+
+        self.canvas.delete(
+            "all"
+        )
+
+        self.canvas.create_image(
+            self.offset_x,
+            self.offset_y,
+            anchor="nw",
+            image=self.tk_image,
+        )
+
+        content_width = max(
+            canvas_width,
+            self.offset_x + display_size[0],
+        )
+
+        content_height = max(
+            canvas_height,
+            self.offset_y + display_size[1],
+        )
+
+        self.canvas.configure(
+            scrollregion=(
+                0,
+                0,
+                content_width,
+                content_height,
             )
+        )
+
+        self._draw_crop_overlay()
+
+    # ==================================================
+    # Crop overlay
+    # ==================================================
+
+    def _draw_crop_overlay(self):
+        if (
+            not self.crop_mode
+            or self.crop_start is None
+            or self.crop_end is None
+        ):
+            return
+
+        x1, y1 = self.crop_start
+        x2, y2 = self.crop_end
+
+        canvas_x1 = (
+            self.offset_x
+            + x1 * self.scale
+        )
+
+        canvas_y1 = (
+            self.offset_y
+            + y1 * self.scale
+        )
+
+        canvas_x2 = (
+            self.offset_x
+            + x2 * self.scale
+        )
+
+        canvas_y2 = (
+            self.offset_y
+            + y2 * self.scale
+        )
+
+        self.canvas.create_rectangle(
+            canvas_x1,
+            canvas_y1,
+            canvas_x2,
+            canvas_y2,
+            outline=self.current_theme["accent"],
+            width=2,
+            dash=(6, 4),
+        )
+
+    # ==================================================
+    # Coordinate conversion
+    # ==================================================
+
+    def _canvas_to_image_point(
+        self,
+        canvas_x,
+        canvas_y,
+    ):
+        if self.source_image is None:
+            return None
+
+        scrolled_x = self.canvas.canvasx(
+            canvas_x
+        )
+
+        scrolled_y = self.canvas.canvasy(
+            canvas_y
+        )
+
+        image_x = (
+            scrolled_x
+            - self.offset_x
+        ) / self.scale
+
+        image_y = (
+            scrolled_y
+            - self.offset_y
+        ) / self.scale
+
+        width, height = (
+            self.source_image.size
+        )
+
+        if not (
+            0 <= image_x < width
+            and 0 <= image_y < height
+        ):
+            return None
+
+        return (
+            int(image_x),
+            int(image_y),
+        )
+
+    # ==================================================
+    # Common validation
+    # ==================================================
+
+    def _require_image(self):
+        if (
+            self.source_image is None
+            or self.mask is None
+        ):
+            messagebox.showinfo(
+                "No Image Loaded",
+                "Load an image before using this tool.",
+            )
+            return False
+
+        return True
+
+    # ==================================================
+    # Save PNG
+    # ==================================================
+
+    def save_png(self):
+        if not self._require_image():
             return
 
         output_name = (
@@ -1493,22 +2247,35 @@ class TransparencyTab(ctk.CTkFrame):
         if base_font_size is not None:
             self.base_font_size = base_font_size
 
+        self.configure(
+            fg_color=theme["window"]
+        )
+
+        self.master.configure(
+            fg_color=theme["window"]
+        )
+
         self.help_label.configure(
-            text_color=theme["muted"],
+            text_color=theme["muted"]
+        )
+
+        self.crop_help.configure(
+            text_color=theme["muted"]
         )
 
         self.save_note.configure(
-            text_color=theme["muted"],
+            text_color=theme["muted"]
         )
 
         self.canvas.configure(
-            bg=theme["preview"],
+            bg=theme["preview"]
         )
 
         self.canvas_frame.configure(
-            border_color=theme["border"],
+            border_color=theme["border"]
         )
 
         if self.source_image is None:
             self._draw_placeholder()
-        
+        else:
+            self._render_editor()

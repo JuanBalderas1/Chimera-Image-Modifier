@@ -1,58 +1,62 @@
 # Chimera Image Modifier
 
-**Chimera Image Modifier** is a desktop image-processing application built with Python, CustomTkinter, and Pillow. It allows users to resize images individually or in bulk, convert between JPG and PNG formats, and manually create transparent PNG files using an interactive editing workspace.
+Chimera Image Modifier is a desktop image-processing application built with Python, CustomTkinter, and Pillow.
 
-This is the first application in the **Chimera Project Series**, a collection of practical applications built to explore software development, user-interface design, and creative problem-solving.
+The project provides focused tools for resizing individual images, processing image batches, and editing image transparency through a custom graphical interface.
 
-Each program is designed to solve a focused problem while serving as an opportunity for experimentation, self-improve, and building something worth sharing.
+## Features
 
----
-
-## Key Features
-
-### Single Image Resizing
-
-* Resize JPG, JPEG, and PNG images.
+### Single Image Resize
+* Resize individual JPG, JPEG, and PNG images.
 * Enter custom width and height values.
-* Maintain the original aspect ratio.
-* Use preset dimensions for Thumbnail, Medium, and HD sizes.
-* Preview images before saving.
-* Export resized images as JPG or PNG.
+* Preserve the original aspect ratio when desired.
+* Use preset image dimensions.
+* Preview the resized image before saving.
+* Export as PNG or JPEG.
 
-### Bulk Image Resizing
-
-* Resize entire folders of supported images.
-* Apply shared dimensions, formats, and aspect-ratio settings.
-* Preview the first compatible image before processing.
-* Automatically number processed filenames.
-* Save all completed images to one organized output folder.
+### Bulk Image Resize
+* Process an entire folder of supported images.
+* Apply one resize configuration across multiple images.
+* Preserve aspect ratio when desired.
+* Use preset or custom dimensions.
+* Preview the first supported image before processing.
+* Automatically number output files.
+* Export batches as PNG or JPEG.
 
 ### Transparency Editor
-
-* Remove image areas using an adjustable transparency brush.
-* Restore previously erased areas.
-* Preview transparent regions using a checkerboard background.
+* Load JPG, JPEG, and PNG images for transparency editing.
+* Erase image areas using an adjustable transparency brush.
+* Restore previously erased image areas.
+* Adjustable brush size.
 * Undo and redo editing actions.
-* Zoom in for detailed editing.
-* Navigate enlarged images with horizontal and vertical scrolling.
-* Save the finished image as a true transparent PNG.
+* Reset removed areas.
+* Zoom in, zoom out, and fit images to the canvas.
+* Scroll across enlarged images.
+* Checkerboard transparency preview.
+* Rotate images left or right.
+* Flip images across the X-axis or Y-axis.
+* Interactive crop selection directly on the canvas.
+* Smooth transparency edges with adjustable strength.
+* Save completed images as transparent PNG files.
 
-### Personalization
+### Personal Settings
+* Different color schemes. (Chimera Default theme, a Light theme, and a Dark theme)
+* Adjustable interface font sizes.
 
-* Choose between Chimera Default, Light, and Dark themes.
-* Adjust the application font size.
+## Project Structure
 
----
+The application has been refactored into feature-specific modules to keep the main application file focused on application startup and shared interface construction.
 
-## Application Tabs
-
-The program is organized into four tabs:
-
-1. **Single Image Resize**
-2. **Bulk Image Resize**
-3. **Transparency Editor**
-4. **Personal Settings**
-
+```text
+Chimera Image Modifier/
+├── main.py
+├── Main_Functions/
+│   ├── single_image_tab.py
+│   ├── bulk_image_tab.py
+│   ├── transparency_tab.py
+│   └── settings_tab.py
+├── assets/
+└── Modified Images/
 ---
 
 ## Technologies Used
@@ -145,25 +149,7 @@ Potential future additions include:
 * Drag-and-drop image importing
 * Persistent user settings
 * Polygon and lasso transparency tools
-* Image rotation, flipping, & cropping
 * Additional export-quality controls
-
----
-
-## Project Purpose
-
-This project began as something practical and flexible for my own personal use, but it quickly became something I wanted to be proud to share with anyone interested in creating something for the fun of it.
-
-It serves as a benchmark of my understanding of:
-
-* Desktop application development
-* GUI architecture
-* Image manipulation
-* File and folder processing
-* Interactive editing tools
-* User-focused feature design
-
-What started as a portfolio project became a passion project fueled by curiosity and pride in developing something practical, flexible, and visually appealing.
 
 ---
 
